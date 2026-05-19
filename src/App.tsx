@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import MobileBottomBar from '@/components/MobileBottomBar';
 import { useLenis } from '@/hooks/useLenis';
 import Home from '@/pages/Home';
 import About from '@/pages/About';
@@ -48,6 +49,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <MobileBottomBar />
     </div>
   );
 }

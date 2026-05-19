@@ -68,11 +68,10 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA Button */}
         <div className="hidden lg:block">
           <Link
             to="/admissions"
-            className="inline-flex items-center px-4 py-2 border border-cream text-cream rounded-md text-[11px] xl:text-[12px] uppercase tracking-[0.06em] font-body transition-all duration-300 hover:bg-burnt hover:border-burnt"
+            className="inline-flex items-center px-5 py-2 bg-burnt text-cream rounded-md text-[11px] xl:text-[12px] uppercase tracking-[0.06em] font-body font-medium transition-all duration-300 hover:scale-[1.03] shadow-lg"
           >
             Apply Now
           </Link>
@@ -92,8 +91,8 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`font-display text-3xl transition-colors duration-300 ${
-                    isActive(link.path) ? 'text-burnt' : 'text-cream hover:text-burnt'
+                  className={`font-display text-2xl md:text-3xl pb-3 border-b border-cream/10 transition-colors duration-300 ${
+                    isActive(link.path) ? 'text-burnt border-burnt/30' : 'text-cream hover:text-burnt hover:border-cream/30'
                   }`}
                 >
                   {link.label}
