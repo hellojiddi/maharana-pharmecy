@@ -36,7 +36,7 @@ export default function Footer() {
                 <h3 className="text-cream font-display font-semibold text-lg">MPCP</h3>
               </div>
             </div>
-            <p className="text-cream/70 text-sm leading-relaxed mb-6">
+            <p className="text-cream opacity-80 text-sm leading-relaxed mb-6">
               Approved by PCI, New Delhi | Affiliated to BUHS, Patna
             </p>
             <div className="flex flex-wrap gap-3">
@@ -66,7 +66,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-cream/70 text-sm hover:text-cream transition-colors duration-300">
+                  <Link to={link.path} className="text-cream opacity-80 hover:opacity-100 text-sm transition-opacity duration-300">
                     {link.label}
                   </Link>
                 </li>
@@ -80,7 +80,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {discoverLinks.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.path} className="text-cream/70 text-sm hover:text-cream transition-colors duration-300">
+                  <Link to={link.path} className="text-cream opacity-80 hover:opacity-100 text-sm transition-opacity duration-300">
                     {link.label}
                   </Link>
                 </li>
@@ -94,20 +94,20 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="text-burnt mt-1 flex-shrink-0" />
-                <p className="text-cream/70 text-sm">
+                <p className="text-cream opacity-85 text-sm">
                   Vill: Chilhari, Block: Dumraon,<br />
                   Dist. Buxar, Bihar - 802133
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-burnt flex-shrink-0" />
-                <a href="tel:+919279881832" className="text-cream/70 text-sm hover:text-cream transition-colors">
+                <a href="tel:+919279881832" className="text-cream opacity-80 hover:opacity-100 text-sm transition-opacity">
                   +91 92798 81832
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-burnt flex-shrink-0" />
-                <a href="mailto:maharanapratapcoe@gmail.com" className="text-cream/70 text-sm hover:text-cream transition-colors">
+                <a href="mailto:maharanapratapcoe@gmail.com" className="text-cream opacity-80 hover:opacity-100 text-sm transition-opacity">
                   maharanapratapcoe@gmail.com
                 </a>
               </div>
@@ -124,33 +124,33 @@ export default function Footer() {
               href="/pdf/PCI-approval-Letter-of-Maharana-Pratap.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cream/80 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1.5"
+              className="text-cream opacity-90 hover:opacity-100 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5"
               title="Verify PCI Approval Letter"
             >
               <span>PCI Approved</span>
-              <span className="text-[10px] text-cream/40 font-normal normal-case">(Verify)</span>
+              <span className="text-[10px] opacity-50 font-normal normal-case">(Verify)</span>
             </a>
-            <span className="text-cream/20 hidden sm:inline">|</span>
+            <span className="text-cream opacity-25 hidden sm:inline">|</span>
             <a
               href="/pdf/Affiliation-Letter-BUHS-Patna.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cream/80 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1.5"
+              className="text-cream opacity-90 hover:opacity-100 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5"
               title="Verify BUHS Affiliation Letter"
             >
               <span>BUHS Affiliated</span>
-              <span className="text-[10px] text-cream/40 font-normal normal-case">(Verify)</span>
+              <span className="text-[10px] opacity-50 font-normal normal-case">(Verify)</span>
             </a>
-            <span className="text-cream/20 hidden sm:inline">|</span>
+            <span className="text-cream opacity-25 hidden sm:inline">|</span>
             <a
               href="/pdf/Bihar-State-Govt-NOC-for-D.Pharm-B.Pharm.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cream/80 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1.5"
+              className="text-cream opacity-90 hover:opacity-100 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5"
               title="Verify Govt. of Bihar NOC"
             >
               <span>Govt. of Bihar NOC</span>
-              <span className="text-[10px] text-cream/40 font-normal normal-case">(Verify)</span>
+              <span className="text-[10px] opacity-50 font-normal normal-case">(Verify)</span>
             </a>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function Footer() {
       {/* Policy and Compliance Footer Links */}
       <div className="border-t border-cream/5 bg-navy/20">
         <div className="max-w-[1400px] mx-auto px-6 py-4">
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] text-cream/40 font-body">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] text-cream opacity-50 font-body">
             <Link to="/policies/privacy-policy" className="hover:text-cream transition-colors">Privacy Policy</Link>
             <span>&bull;</span>
             <Link to="/policies/terms-and-conditions" className="hover:text-cream transition-colors">Terms &amp; Conditions</Link>
@@ -178,11 +178,11 @@ export default function Footer() {
       {/* Copyright */}
       <div className="border-t border-cream/5">
         <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-center md:text-left text-cream/40 text-[13px]">
+          <p className="text-center md:text-left text-cream opacity-60 text-[13px]">
             &copy; {new Date().getFullYear()} Maharana Pratap College of Pharmacy. All Rights Reserved.
           </p>
-          <p className="text-center md:text-right text-cream/40 text-[13px]">
-            Designed &amp; Developed by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" className="text-cream/60 hover:text-burnt font-medium transition-colors">Master Manikant</a>
+          <p className="text-center md:text-right text-cream opacity-60 text-[13px]">
+            Designed &amp; Developed by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" className="text-cream opacity-80 hover:opacity-100 hover:text-burnt font-medium transition-all">Master Manikant</a>
           </p>
         </div>
       </div>

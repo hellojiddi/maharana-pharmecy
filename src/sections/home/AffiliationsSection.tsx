@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const badges = [
-  { icon: Award, label: 'PCI Approval Letter' },
-  { icon: Building2, label: 'BUHS Affiliation' },
-  { icon: FileText, label: 'Bihar Govt. NOC' },
-  { icon: FileCheck, label: 'Consent of Affiliation' },
+  { icon: Award, label: 'PCI Approval Letter', link: '/pdf/PCI-approval-Letter-of-Maharana-Pratap.pdf' },
+  { icon: Building2, label: 'BUHS Affiliation', link: '/pdf/Affiliation-Letter-BUHS-Patna.pdf' },
+  { icon: FileText, label: 'Bihar Govt. NOC', link: '/pdf/Bihar-State-Govt-NOC-for-D.Pharm-B.Pharm.pdf' },
+  { icon: FileCheck, label: 'Consent of Affiliation', link: '/pdf/Consent-of-affiliation-B.Pharm-D.pharm.pdf' },
 ];
 
 export default function AffiliationsSection() {
@@ -22,14 +22,21 @@ export default function AffiliationsSection() {
 
         <div ref={badgesRef} className="flex flex-wrap justify-center gap-8 md:gap-12">
           {badges.map((badge, i) => (
-            <div key={i} className="flex flex-col items-center gap-3">
-              <div className="w-20 h-20 rounded-lg bg-navy/5 flex items-center justify-center shadow-sm">
-                <badge.icon size={32} className="text-burnt" strokeWidth={1.5} />
+            <a
+              key={i}
+              href={badge.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-3 group transition-transform duration-300 hover:scale-105"
+              title={`Click to Verify ${badge.label}`}
+            >
+              <div className="w-20 h-20 rounded-lg bg-navy/5 flex items-center justify-center shadow-sm group-hover:bg-burnt/10 group-hover:border-burnt/20 border border-transparent transition-all duration-300">
+                <badge.icon size={32} className="text-burnt transition-transform group-hover:scale-110 duration-300" strokeWidth={1.5} />
               </div>
-              <span className="text-navy/70 text-[13px] font-body text-center max-w-[120px]">
+              <span className="text-navy/70 text-[13px] font-body text-center max-w-[120px] group-hover:text-burnt font-medium transition-colors duration-300">
                 {badge.label}
               </span>
-            </div>
+            </a>
           ))}
         </div>
 
