@@ -43,8 +43,8 @@ export default function Navbar() {
             <span className="text-cream font-display font-bold text-lg">R</span>
             <span className="text-cream font-display font-bold text-xs absolute ml-3 mt-1">x</span>
           </div>
-          <div className="hidden sm:block">
-            <span className="text-cream font-display font-semibold text-lg leading-tight">MPCP</span>
+          <div className="block">
+            <span className="text-cream font-display font-semibold text-lg leading-tight tracking-wide">MPCP</span>
           </div>
         </Link>
 

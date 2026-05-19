@@ -5,20 +5,17 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 const quickLinks = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
-  { label: 'Courses', path: '/courses' },
-  { label: 'Admissions', path: '/admissions' },
-  { label: 'Facilities', path: '/facilities' },
-  { label: 'Faculty', path: '/faculty' },
-  { label: 'Placements', path: '/placements' },
-  { label: 'Gallery', path: '/gallery' },
-  { label: 'Documents', path: '/documents' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Contact Us', path: '/contact' },
+  { label: 'Disclaimer Notice', path: '/policies/disclaimer' },
+  { label: 'Privacy Policy', path: '/policies/privacy-policy' },
 ];
 
-const programs = [
-  { label: 'D.Pharm', path: '/courses' },
-  { label: 'B.Pharm', path: '/courses' },
-  { label: 'Admission Inquiry', path: '/admissions' },
+const discoverLinks = [
+  { label: 'Academic Courses', path: '/courses' },
+  { label: 'Admissions 2026', path: '/admissions' },
+  { label: 'Campus Facilities', path: '/facilities' },
+  { label: 'Training & Placements', path: '/placements' },
+  { label: 'Photo Gallery', path: '/gallery' },
 ];
 
 export default function Footer() {
@@ -78,11 +75,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3 - Programs */}
+          {/* Column 3 - Discover */}
           <div>
-            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/50 font-body mb-6">Programs</h4>
+            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/50 font-body mb-6">Discover</h4>
             <ul className="space-y-3">
-              {programs.map((link) => (
+              {discoverLinks.map((link) => (
                 <li key={link.label}>
                   <Link to={link.path} className="text-cream/70 text-sm hover:text-cream transition-colors duration-300">
                     {link.label}
