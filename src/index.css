@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 33% 96%;
+    --foreground: 216 68% 14%;
+    --card: 30 100% 98%;
+    --card-foreground: 216 68% 14%;
+    --popover: 30 100% 98%;
+    --popover-foreground: 216 68% 14%;
+    --primary: 20 74% 45%;
+    --primary-foreground: 30 33% 96%;
+    --secondary: 216 68% 14%;
+    --secondary-foreground: 30 33% 96%;
+    --muted: 30 20% 90%;
+    --muted-foreground: 216 30% 40%;
+    --accent: 20 74% 45%;
+    --accent-foreground: 30 33% 96%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 20% 85%;
+    --input: 216 20% 85%;
+    --ring: 20 74% 45%;
+    --radius: 0.5rem;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F7F2EC;
+    color: #0B1D3A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  ::selection {
+    background-color: rgba(199, 90, 30, 0.2);
+    color: #0B1D3A;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply flex items-center gap-2 text-[13px] uppercase tracking-[0.08em] text-burnt font-body font-normal;
+  }
+
+  .section-label::before {
+    content: '';
+    @apply w-10 h-[2px] bg-burnt;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-9 py-4 bg-burnt text-cream rounded-md text-[13px] uppercase tracking-[0.08em] font-body font-normal transition-all duration-300 hover:scale-[1.03] hover:brightness-110;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3.5 bg-transparent border border-navy-10 text-navy rounded-md text-[13px] uppercase tracking-[0.08em] font-body font-normal transition-all duration-300 hover:bg-navy hover:text-cream;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] text-white rounded-md text-[13px] uppercase tracking-[0.08em] font-body font-normal transition-all duration-300 hover:scale-[1.03] hover:brightness-110;
+  }
+
+  .info-card {
+    @apply bg-ivory rounded-2xl p-8 shadow-[0_4px_24px_rgba(11,29,58,0.06)] transition-all duration-300 hover:shadow-[0_8px_32px_rgba(11,29,58,0.1)] hover:-translate-y-1;
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-burnt scale-x-0 origin-left transition-transform duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply scale-x-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+}

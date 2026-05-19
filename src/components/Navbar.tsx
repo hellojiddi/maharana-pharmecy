@@ -1,0 +1,115 @@
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu } from 'lucide-react';
+import { useNavScroll } from '@/hooks/useNavScroll';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+
+const navLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Courses', path: '/courses' },
+  { label: 'Admissions', path: '/admissions' },
+  { label: 'Facilities', path: '/facilities' },
+  { label: 'Faculty', path: '/faculty' },
+  { label: 'Placements', path: '/placements' },
+  { label: 'Gallery', path: '/gallery' },
+  { label: 'Documents', path: '/documents' },
+  { label: 'Contact', path: '/contact' },
+];
+
+export default function Navbar() {
+  const isScrolled = useNavScroll(100);
+  const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
+  };
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-navy-85 backdrop-blur-xl shadow-lg'
+          : 'bg-transparent'
+      }`}
+      style={{ height: 80 }}
+    >
+      <div className="max-w-[1440px] mx-auto px-4 xl:px-6 h-full flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-burnt flex items-center justify-center">
+            <span className="text-cream font-display font-bold text-lg">R</span>
+            <span className="text-cream font-display font-bold text-xs absolute ml-3 mt-1">x</span>
+          </div>
+          <div className="hidden sm:block">
+            <span className="text-cream font-display font-semibold text-lg leading-tight">MPCP</span>
+          </div>
+        </Link>
+
+        {/* Desktop Nav Links */}
+        <div className="hidden lg:flex items-center gap-3.5 xl:gap-5">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`text-[11px] xl:text-[12px] uppercase tracking-[0.06em] font-body transition-colors duration-300 ${
+                isActive(link.path)
+                  ? 'text-burnt font-bold'
+                  : 'text-cream hover:text-burnt'
+              }`}
+            >
+              {link.label}
+              {isActive(link.path) && (
+                <span className="block h-[2px] bg-burnt mt-1" />
+              )}
+            </Link>
+          ))}
+        </div>
+
+        {/* CTA Button */}
+        <div className="hidden lg:block">
+          <Link
+            to="/admissions"
+            className="inline-flex items-center px-4 py-2 border border-cream text-cream rounded-md text-[11px] xl:text-[12px] uppercase tracking-[0.06em] font-body transition-all duration-300 hover:bg-burnt hover:border-burnt"
+          >
+            Apply Now
+          </Link>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <SheetTrigger asChild className="lg:hidden">
+            <button className="text-cream p-2">
+              <Menu size={24} />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="right" className="bg-navy border-navy w-full sm:w-[400px]">
+            <div className="flex flex-col gap-8 mt-12">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setMobileOpen(false)}
+                  className={`font-display text-3xl transition-colors duration-300 ${
+                    isActive(link.path) ? 'text-burnt' : 'text-cream hover:text-burnt'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                to="/admissions"
+                onClick={() => setMobileOpen(false)}
+                className="btn-primary mt-4 text-center"
+              >
+                Apply Now
+              </Link>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </nav>
+  );
+}
