@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,7 +7,7 @@ import { MapPin, Phone, GraduationCap } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const heroImages = [
-  '/assets/hero-img-1.jpg',
+  '/assets/hero-img-1.png',
   '/assets/hero-img-2.jpg',
   '/assets/hero-img-3.jpg',
   '/assets/hero-img-4.jpg',
@@ -19,29 +19,21 @@ const heroImages = [
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const carousel = carouselRef.current;
     const text = textRef.current;
     const bar = barRef.current;
-    if (!section || !carousel || !text || !bar) return;
+    if (!text || !bar) return;
 
-    // Entrance animation
+    // Entrance animation for text
     const tl = gsap.timeline({ delay: 0.3 });
     tl.fromTo(
-      carousel.children,
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 1, stagger: 0.1, ease: 'power3.out' }
-    )
-    .fromTo(
       text.querySelectorAll('.hero-animate'),
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' },
-      '-=0.5'
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' }
     )
     .fromTo(
       bar,
@@ -50,71 +42,57 @@ export default function Hero() {
       '-=0.3'
     );
 
-    // Auto-rotation for carousel
-    const scrollTl = gsap.to(carousel, {
-      rotateY: 360,
-      duration: 30,
-      repeat: -1,
-      ease: 'none',
-    });
-
-    // Floating animation for cards
-    const cards = carousel.querySelectorAll('.hero-card');
-    cards.forEach((card, i) => {
-      gsap.to(card, {
-        y: Math.sin(i * 0.7) * 10,
-        duration: 2 + i * 0.3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-    });
+    // Smooth image rotation interval
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
 
     return () => {
       tl.kill();
-      scrollTl.kill();
+      clearInterval(interval);
     };
   }, []);
 
   return (
-  return (
     <>
       <section
         ref={sectionRef}
-        className="relative h-[60vh] md:h-[70vh] bg-navy overflow-hidden flex items-center pt-20"
+        className="relative h-[55vh] md:h-[70vh] bg-navy overflow-hidden flex items-center pt-20"
       >
-        {/* 3D Image Carousel */}
-        <div
-          ref={carouselRef}
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ perspective: '1200px' }}
-        >
-          <div
-            className="relative w-full h-full mt-10"
-            style={{ transformStyle: 'preserve-3d' }}
-          >
-            {heroImages.map((img, i) => {
-              const angle = (i / heroImages.length) * 360;
-              const radius = window.innerWidth < 768 ? 300 : 500;
-              return (
-                <div
-                  key={i}
-                  className="hero-card absolute left-1/2 top-1/2 w-[240px] h-[160px] md:w-[360px] md:h-[260px] rounded-xl overflow-hidden shadow-2xl"
-                  style={{
-                    transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px)`,
-                    backfaceVisibility: 'hidden',
-                  }}
-                >
-                  <img
-                    src={img}
-                    alt={`College life ${i + 1}`}
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-navy/10" />
-                </div>
-              );
-            })}
+        {/* Premium Ken Burns Fade Slider */}
+        <div className="absolute inset-0 w-full h-full">
+          {heroImages.map((img, i) => (
+            <div
+              key={i}
+              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+                i === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
+            >
+              <img
+                src={img}
+                alt={`College life ${i + 1}`}
+                className={`w-full h-full object-cover transition-transform duration-[5000ms] ease-out ${
+                  i === activeIndex ? 'scale-105' : 'scale-100'
+                }`}
+                loading="eager"
+              />
+              {/* Premium dark gradient overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
+            </div>
+          ))}
+
+          {/* Slider Indicators (Dots) */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+            {heroImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  i === activeIndex ? 'bg-burnt w-6 shadow-md' : 'bg-cream/40 hover:bg-cream/70'
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </section>
