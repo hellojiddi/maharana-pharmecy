@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
-import { useNavScroll } from '@/hooks/useNavScroll';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navLinks = [
@@ -18,7 +17,6 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const isScrolled = useNavScroll(100);
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
