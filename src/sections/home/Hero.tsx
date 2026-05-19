@@ -50,31 +50,16 @@ export default function Hero() {
       '-=0.3'
     );
 
-    // Scroll-driven carousel rotation
-    const cards = carousel.querySelectorAll('.hero-card');
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: '+=200%',
-        pin: true,
-        scrub: 1,
-      },
-    });
-
-    scrollTl.to(carousel, {
+    // Auto-rotation for carousel
+    const scrollTl = gsap.to(carousel, {
       rotateY: 360,
-      duration: 1,
+      duration: 30,
+      repeat: -1,
       ease: 'none',
     });
 
-    scrollTl.to(
-      text.querySelectorAll('.hero-animate'),
-      { opacity: 0, y: -30, stagger: 0.05, duration: 0.3 },
-      0.3
-    );
-
     // Floating animation for cards
+    const cards = carousel.querySelectorAll('.hero-card');
     cards.forEach((card, i) => {
       gsap.to(card, {
         y: Math.sin(i * 0.7) * 10,
@@ -88,7 +73,6 @@ export default function Hero() {
     return () => {
       tl.kill();
       scrollTl.kill();
-      ScrollTrigger.getAll().forEach(st => st.kill());
     };
   }, []);
 
@@ -123,7 +107,7 @@ export default function Hero() {
                   src={img}
                   alt={`College life ${i + 1}`}
                   className="w-full h-full object-cover"
-                  loading={i < 3 ? 'eager' : 'lazy'}
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-navy/20" />
               </div>
