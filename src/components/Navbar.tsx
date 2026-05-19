@@ -44,7 +44,8 @@ export default function Navbar() {
             <span className="text-cream font-display font-bold text-xs absolute ml-3 mt-1">x</span>
           </div>
           <div className="block">
-            <span className="text-cream font-display font-semibold text-lg leading-tight tracking-wide">MPCP</span>
+            <span className="text-cream font-display font-semibold text-xl leading-tight tracking-wide block">MPCP</span>
+            <span className="text-cream/70 font-body text-[10px] hidden sm:block tracking-wider uppercase mt-0.5">Maharana Pratap College of Pharmacy</span>
           </div>
         </Link>
 

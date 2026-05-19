@@ -151,9 +151,12 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="border-t border-cream/5">
-        <div className="max-w-[1400px] mx-auto px-6 py-5">
-          <p className="text-center text-cream/40 text-[13px]">
+        <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-center md:text-left text-cream/40 text-[13px]">
             &copy; {new Date().getFullYear()} Maharana Pratap College of Pharmacy. All Rights Reserved.
+          </p>
+          <p className="text-center md:text-right text-cream/40 text-[13px]">
+            Designed &amp; Developed by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" className="text-cream/60 hover:text-burnt font-medium transition-colors">Master Manikant</a>
           </p>
         </div>
       </div>

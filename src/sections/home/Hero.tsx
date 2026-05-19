@@ -77,117 +77,116 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[100dvh] bg-navy overflow-hidden flex items-center"
-    >
-      {/* 3D Image Carousel */}
-      <div
-        ref={carouselRef}
-        className="absolute inset-0 flex items-center justify-center"
-        style={{ perspective: '1200px' }}
+  return (
+    <>
+      <section
+        ref={sectionRef}
+        className="relative h-[60vh] md:h-[70vh] bg-navy overflow-hidden flex items-center pt-20"
       >
+        {/* 3D Image Carousel */}
         <div
-          className="relative w-full h-full"
-          style={{ transformStyle: 'preserve-3d' }}
+          ref={carouselRef}
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ perspective: '1200px' }}
         >
-          {heroImages.map((img, i) => {
-            const angle = (i / heroImages.length) * 360;
-            const radius = 500;
-            return (
-              <div
-                key={i}
-                className="hero-card absolute left-1/2 top-1/2 w-[280px] h-[200px] md:w-[360px] md:h-[260px] rounded-xl overflow-hidden shadow-2xl"
-                style={{
-                  transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px)`,
-                  backfaceVisibility: 'hidden',
-                }}
-              >
-                <img
-                  src={img}
-                  alt={`College life ${i + 1}`}
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-navy/20" />
+          <div
+            className="relative w-full h-full mt-10"
+            style={{ transformStyle: 'preserve-3d' }}
+          >
+            {heroImages.map((img, i) => {
+              const angle = (i / heroImages.length) * 360;
+              const radius = window.innerWidth < 768 ? 300 : 500;
+              return (
+                <div
+                  key={i}
+                  className="hero-card absolute left-1/2 top-1/2 w-[240px] h-[160px] md:w-[360px] md:h-[260px] rounded-xl overflow-hidden shadow-2xl"
+                  style={{
+                    transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px)`,
+                    backfaceVisibility: 'hidden',
+                  }}
+                >
+                  <img
+                    src={img}
+                    alt={`College life ${i + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-navy/10" />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-navy relative overflow-hidden border-t border-cream/5">
+        {/* Silhouette Background */}
+        <div className="absolute bottom-0 right-0 z-[1] pointer-events-none opacity-20">
+          <img
+            src="/assets/hero-silhouette.png"
+            alt=""
+            className="h-[40vh] w-auto object-contain"
+          />
+        </div>
+
+        {/* Text Content */}
+        <div
+          ref={textRef}
+          className="relative z-[3] max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24 flex flex-col items-center text-center"
+        >
+          {/* Badge */}
+          <div className="hero-animate inline-flex items-center gap-2 px-4 py-2 bg-burnt rounded-full mb-6 shadow-md">
+            <span className="text-cream text-[12px] md:text-[13px] uppercase tracking-[0.08em] font-body">
+              PCI Approved &bull; BUHS Affiliated
+            </span>
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="hero-animate font-display text-4xl sm:text-5xl md:text-6xl text-cream font-bold leading-[1.1] tracking-tight max-w-4xl mb-6">
+            Maharana Pratap College of Pharmacy
+          </h1>
+
+          {/* Sub-heading */}
+          <p className="hero-animate font-body text-lg md:text-2xl text-cream/80 font-light tracking-wide mb-6">
+            Shaping Future Pharmacists in Buxar, Bihar
+          </p>
+
+          {/* Description */}
+          <p className="hero-animate font-body text-sm md:text-base text-cream/60 max-w-[600px] mb-10 leading-relaxed">
+            Approved by Pharmacy Council of India, New Delhi and Affiliated to Bihar University of Health Sciences, Patna. Offering D.Pharm and B.Pharm programs with world-class facilities.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="hero-animate flex flex-wrap justify-center gap-4 mb-16">
+            <Link to="/courses" className="btn-primary shadow-lg">
+              Explore Courses
+            </Link>
+            <Link to="/contact" className="inline-flex items-center px-8 py-3.5 border border-cream text-cream rounded-md text-[13px] uppercase tracking-[0.08em] font-body transition-all duration-300 hover:bg-cream hover:text-navy">
+              Contact Us
+            </Link>
+          </div>
+
+          {/* Bottom Info Bar */}
+          <div ref={barRef} className="w-full border-t border-cream/10 pt-10">
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+              <div className="flex items-center gap-2">
+                <MapPin size={16} className="text-cream/60" />
+                <span className="text-cream/70 text-[13px] font-body">Chilhari, Buxar, Bihar</span>
               </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Silhouette */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[2] pointer-events-none opacity-40">
-        <img
-          src="/assets/hero-silhouette.png"
-          alt=""
-          className="h-[50vh] md:h-[60vh] w-auto object-contain"
-          style={{ filter: 'brightness(0.3)' }}
-        />
-      </div>
-
-      {/* Text Content */}
-      <div
-        ref={textRef}
-        className="relative z-[3] max-w-[1400px] mx-auto px-6 md:px-12 pt-24 pb-32"
-      >
-        {/* Badge */}
-        <div className="hero-animate inline-flex items-center gap-2 px-4 py-2 bg-burnt rounded-full mb-6">
-          <span className="text-cream text-[13px] uppercase tracking-[0.08em] font-body">
-            PCI Approved &bull; BUHS Affiliated
-          </span>
-        </div>
-
-        {/* Main Heading */}
-        <h1 className="hero-animate font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream font-bold leading-[0.9] tracking-tight max-w-3xl mb-4">
-          Maharana Pratap College of Pharmacy
-        </h1>
-
-        {/* Sub-heading */}
-        <p className="hero-animate font-body text-xl md:text-2xl text-cream/80 font-light tracking-wide mb-4">
-          Shaping Future Pharmacists in Buxar, Bihar
-        </p>
-
-        {/* Description */}
-        <p className="hero-animate font-body text-base text-cream/60 max-w-[480px] mb-8 leading-relaxed">
-          Approved by Pharmacy Council of India, New Delhi and Affiliated to Bihar University of Health Sciences, Patna. Offering D.Pharm and B.Pharm programs with world-class facilities.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="hero-animate flex flex-wrap gap-4">
-          <Link to="/courses" className="btn-primary">
-            Explore Courses
-          </Link>
-          <Link to="/contact" className="inline-flex items-center px-8 py-3.5 border border-cream text-cream rounded-md text-[13px] uppercase tracking-[0.08em] font-body transition-all duration-300 hover:bg-cream hover:text-navy">
-            Contact Us
-          </Link>
-        </div>
-      </div>
-
-      {/* Bottom Info Bar */}
-      <div
-        ref={barRef}
-        className="absolute bottom-10 left-0 w-full z-[3]"
-      >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="flex flex-wrap items-center gap-6 md:gap-0">
-            <div className="flex items-center gap-2 md:pr-8 md:border-r md:border-cream/20">
-              <MapPin size={16} className="text-cream/60" />
-              <span className="text-cream/70 text-[13px] font-body">Chilhari, Buxar, Bihar</span>
-            </div>
-            <div className="flex items-center gap-2 md:px-8 md:border-r md:border-cream/20">
-              <Phone size={16} className="text-cream/60" />
-              <a href="tel:+919279881832" className="text-cream/70 text-[13px] font-body hover:text-cream transition-colors">
-                +91 92798 81832
-              </a>
-            </div>
-            <div className="flex items-center gap-2 md:pl-8">
-              <GraduationCap size={16} className="text-cream/60" />
-              <span className="text-cream/70 text-[13px] font-body">Est. 2018</span>
+              <div className="flex items-center gap-2">
+                <Phone size={16} className="text-cream/60" />
+                <a href="tel:+919279881832" className="text-cream/70 text-[13px] font-body hover:text-cream transition-colors">
+                  +91 92798 81832
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <GraduationCap size={16} className="text-cream/60" />
+                <span className="text-cream/70 text-[13px] font-body">Est. 2018</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
