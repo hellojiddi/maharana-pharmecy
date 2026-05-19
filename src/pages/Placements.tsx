@@ -1,7 +1,7 @@
 import PageHeader from '@/components/PageHeader';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
-import { Briefcase, TrendingUp, Award, Building2, GraduationCap, Users } from 'lucide-react';
+import { Briefcase, TrendingUp, Award, Building2, Users } from 'lucide-react';
 
 export default function Placements() {
   const scrollRef1 = useScrollReveal<HTMLElement>();

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PageHeader from '@/components/PageHeader';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Calendar, FileText, CheckCircle, Clock, Phone, Loader2, Download } from 'lucide-react';
+import { FileText, CheckCircle, Phone, Loader2, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Admissions() {
@@ -43,13 +43,7 @@ export default function Admissions() {
     }
   ];
 
-  const importantDates = [
-    { event: 'Registration Window Starts', date: 'June 1, 2026' },
-    { event: 'Registration Window Closes', date: 'July 31, 2026' },
-    { event: 'Document Verification Phase', date: 'August 1-15, 2026' },
-    { event: 'Admission Confirmation List', date: 'August 20, 2026' },
-    { event: 'Classes Commencing From', date: 'September 1, 2026' }
-  ];
+
 
   const standardDocuments = [
     '10th Mark sheet & Passing Certificate (Photocopy)',
