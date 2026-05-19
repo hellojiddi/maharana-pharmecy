@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PageHeader from '@/components/PageHeader';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { Calendar, FileText, CheckCircle, Clock, Phone, Loader2 } from 'lucide-react';
+import { Calendar, FileText, CheckCircle, Clock, Phone, Loader2, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Admissions() {
@@ -34,7 +34,7 @@ export default function Admissions() {
     {
       step: '03',
       title: 'Document Verification',
-      description: 'Submit your 10th and 12th marks sheets, transfer certificate, and other required documents for official verification.'
+      description: 'Submit your 10th/12th marks sheets, transfer certificate, and other required documents for official verification.'
     },
     {
       step: '04',
@@ -51,15 +51,26 @@ export default function Admissions() {
     { event: 'Classes Commencing From', date: 'September 1, 2026' }
   ];
 
-  const requiredDocuments = [
-    '10th Standard Passing Mark Sheet & Original Certificate',
-    '12th Standard Passing Mark Sheet & Original Certificate (Science stream: PCM/PCB)',
-    'Transfer Certificate (TC) from your last studied institution',
-    'Migration Certificate (original copy for other state boards)',
-    'Recent Passport Size Photographs (6 copies in professional attire)',
-    'Aadhar Card Copy (Self-Attested)',
-    'Caste or Category Certificate (if claiming quota benefits)',
-    'Income Certificate (if seeking fee concessions/scholarships)'
+  const standardDocuments = [
+    '10th Mark sheet & Passing Certificate (Photocopy)',
+    '12th Mark sheet & Passing Certificate (Photocopy)',
+    'Aadhar Card (Photocopy)',
+    'College Leaving Certificate (CLC/TC) (Original)',
+    'Migration Certificate (Original)',
+    'Passport Size Photo (5 Piece)',
+    'Caste Certificate (If required)',
+    'B.U.H.S, Entrance Score Card (if available - Only B.Pharm)'
+  ];
+
+  const lateralEntryDocuments = [
+    '10th & 12th Mark sheet & Passing Certificate (Photocopy)',
+    'Aadhar Card (Photocopy)',
+    'College Leaving Certificate (CLC/TC) (Original)',
+    'D.Pharm Migration Certificate (Original)',
+    'D.Pharm Mark Sheet & Certificate (Photocopy)',
+    'Internship / Training Certificate (Photocopy)',
+    'Passport Size Photo (5 Piece)',
+    'Caste Certificate (If required)'
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -78,6 +89,8 @@ export default function Admissions() {
     setErrorMessage('');
     
     try {
+      // 100% Free and Professional Web3Forms Integration
+      // This sends an email directly to the college without needing technical databases!
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -87,12 +100,12 @@ export default function Admissions() {
         body: JSON.stringify({
           access_key: '2dfb313d-1fed-440b-8023-62beb795262a',
           name: formState.name,
-          email: formState.email || 'no-email@provided.com',
+          email: formState.email || 'No email provided',
           phone: formState.phone,
           course: formState.course,
-          message: formState.message || 'Admission inquiry from website',
-          subject: `New Admission Inquiry: ${formState.name} (${formState.course})`,
-          from_name: 'MPCP Buxar Admissions'
+          message: formState.message || 'New admission inquiry from website',
+          subject: `Admission Inquiry: ${formState.name} (${formState.course})`,
+          from_name: 'MPCP Buxar Admissions Gateway'
         })
       });
       
@@ -100,15 +113,9 @@ export default function Admissions() {
       
       if (result.success) {
         setIsSuccess(true);
-        setFormState({
-          name: '',
-          email: '',
-          phone: '',
-          course: 'D.Pharm',
-          message: '',
-        });
+        setFormState({ name: '', email: '', phone: '', course: 'D.Pharm', message: '' });
       } else {
-        setErrorMessage('कुछ तकनीकी खराबी हुई। कृपया बाद में प्रयास करें या सीधे कॉल करें।');
+        setErrorMessage('कुछ तकनीकी खराबी हुई। कृपया सीधे कॉल करें।');
       }
     } catch (err) {
       setErrorMessage('नेटवर्क समस्या। कृपया सीधे कॉल या व्हाट्सएप (+91 92798 81832) के माध्यम से संपर्क करें।');
@@ -125,8 +132,27 @@ export default function Admissions() {
         backgroundImage="/assets/about-campus.jpg"
       />
 
+      {/* BSCC Notice Bar */}
+      <div className="bg-burnt text-cream py-4 px-6 relative z-10 shadow-md">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cream opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-cream"></span>
+            </span>
+            <span className="font-body font-bold text-[15px] tracking-wide">
+              नोट: स्टूडेंट क्रेडिट कार्ड (BSCC) की सुविधा उपलब्ध है | (केवल बी०फार्म० के लिए)
+            </span>
+          </div>
+          <a href="/pdf/maharana-pratap-pharmacy-details.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-cream text-burnt px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg">
+            <Download size={16} />
+            Download College Details PDF
+          </a>
+        </div>
+      </div>
+
       {/* Application Steps */}
-      <section ref={scrollRef1} className="py-24 bg-cream">
+      <section ref={scrollRef1} className="py-20 bg-cream">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="section-label mb-4">Procedure</span>
@@ -159,50 +185,49 @@ export default function Admissions() {
         </div>
       </section>
 
-      {/* Dates and Documents */}
-      <section ref={scrollRef2} className="py-24 bg-ivory border-t border-navy/5">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
-            {/* Important Dates */}
-            <div className="bg-cream/40 p-8 rounded-2xl border border-navy/5">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="h-12 w-12 rounded-xl bg-burnt/10 flex items-center justify-center text-burnt">
-                  <Calendar size={24} />
-                </div>
-                <h3 className="font-display text-2xl text-navy font-bold">Important Dates</h3>
-              </div>
-              <div className="space-y-5">
-                {importantDates.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-4 pb-4 border-b border-navy/10 last:border-0 last:pb-0">
-                    <Clock size={18} className="text-burnt mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-body text-base font-bold text-navy">{item.event}</h4>
-                      <p className="font-body text-sm text-navy/60 mt-0.5">{item.date}</p>
-                    </div>
-                  </div>
+      {/* Required Documents Section */}
+      <section ref={scrollRef2} className="py-20 bg-ivory border-t border-navy/5">
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-burnt/10 text-burnt mb-6">
+              <FileText size={32} />
+            </div>
+            <h2 className="font-display text-4xl text-navy font-bold mb-4">Required Documents</h2>
+            <p className="text-navy/60 max-w-2xl mx-auto">Please ensure you have the following documents ready at the time of admission verification.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Standard Admissions */}
+            <div className="bg-white p-8 md:p-10 rounded-2xl border border-navy/10 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-burnt/5 rounded-bl-full -z-0"></div>
+              <h3 className="font-display text-2xl text-navy font-bold mb-6 relative z-10 border-b border-navy/10 pb-4">
+                For B.Pharm & D.Pharm
+              </h3>
+              <ul className="space-y-4 relative z-10">
+                {standardDocuments.map((doc, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle size={18} className="text-burnt mt-0.5 flex-shrink-0" />
+                    <span className="font-body text-navy/80 leading-relaxed">{doc}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
-            {/* Required Documents */}
-            <div className="bg-cream/40 p-8 rounded-2xl border border-navy/5">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="h-12 w-12 rounded-xl bg-burnt/10 flex items-center justify-center text-burnt">
-                  <FileText size={24} />
-                </div>
-                <h3 className="font-display text-2xl text-navy font-bold">Required Documents</h3>
-              </div>
-              <div className="space-y-4">
-                {requiredDocuments.map((doc, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-burnt mt-1 flex-shrink-0" />
-                    <span className="font-body text-sm text-navy/80 leading-relaxed">{doc}</span>
-                  </div>
+            {/* Lateral Entry Admissions */}
+            <div className="bg-white p-8 md:p-10 rounded-2xl border border-navy/10 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-burnt/5 rounded-bl-full -z-0"></div>
+              <h3 className="font-display text-2xl text-navy font-bold mb-6 relative z-10 border-b border-navy/10 pb-4">
+                For B.Pharm (Lateral Entry)
+              </h3>
+              <ul className="space-y-4 relative z-10">
+                {lateralEntryDocuments.map((doc, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle size={18} className="text-burnt mt-0.5 flex-shrink-0" />
+                    <span className="font-body text-navy/80 leading-relaxed">{doc}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
-
           </div>
         </div>
       </section>
@@ -210,43 +235,43 @@ export default function Admissions() {
       {/* Form Submission */}
       <section className="py-24 bg-cream border-t border-navy/5">
         <div className="max-w-[800px] mx-auto px-6">
-          <div className="bg-ivory rounded-3xl p-8 md:p-12 border border-navy/5 shadow-lg">
-            <div className="text-center mb-10">
+          <div className="bg-ivory rounded-3xl p-8 md:p-12 border border-navy/5 shadow-xl relative overflow-hidden">
+            <div className="text-center mb-10 relative z-10">
               <h2 className="font-display text-3xl md:text-4xl text-navy font-bold">
                 Online Inquiry Form
               </h2>
               <p className="font-body text-sm text-navy/60 mt-3 max-w-md mx-auto">
-                Submit the enquiry form below, or get in touch with our counselling wing directly for immediate assistance.
+                Submit the enquiry form below, and our admission cell will contact you immediately.
               </p>
               <div className="mt-6 flex flex-wrap gap-4 justify-center">
                 <a
                   href="tel:+919279881832"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cream text-navy font-bold hover:bg-cream/80 transition-colors shadow-sm text-sm"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-burnt text-cream font-bold hover:bg-burnt/90 transition-colors shadow-sm text-sm"
                 >
-                  <Phone size={16} className="text-burnt" />
+                  <Phone size={16} />
                   +91 92798 81832
                 </a>
               </div>
             </div>
 
             {isSuccess ? (
-              <div className="text-center py-12 bg-burnt/5 rounded-2xl border border-burnt/20">
-                <div className="h-16 w-16 bg-burnt/10 rounded-full flex items-center justify-center text-burnt mx-auto mb-6">
+              <div className="text-center py-12 bg-green-50 rounded-2xl border border-green-200 relative z-10">
+                <div className="h-16 w-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mx-auto mb-6">
                   <CheckCircle size={36} />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-navy">धन्यवाद! (Thank You!)</h3>
-                <p className="font-body text-navy/70 mt-3 max-w-sm mx-auto text-sm leading-relaxed">
-                  आपका एडमिशन इंक्वायरी फॉर्म सफलतापूर्वक जमा कर दिया गया है। हमारा परामर्शदाता दल आपसे अतिशीघ्र संपर्क करेगा।
+                <h3 className="font-display text-2xl font-bold text-green-800">धन्यवाद! (Thank You!)</h3>
+                <p className="font-body text-green-700 mt-3 max-w-sm mx-auto text-sm leading-relaxed">
+                  आपका फॉर्म कॉलेज के ईमेल पर भेज दिया गया है। हमारा स्टाफ आपसे अतिशीघ्र संपर्क करेगा।
                 </p>
                 <Button 
                   onClick={() => setIsSuccess(false)}
-                  className="mt-8 bg-burnt text-cream hover:bg-burnt/90 font-body px-8 py-2 text-[13px] uppercase tracking-wider"
+                  className="mt-8 bg-green-600 text-white hover:bg-green-700 font-body px-8 py-2 text-[13px] uppercase tracking-wider"
                 >
                   Submit Another Inquiry
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-[13px] uppercase tracking-wider font-body font-semibold text-navy/80 mb-2">
@@ -259,7 +284,7 @@ export default function Admissions() {
                       onChange={handleInputChange}
                       required
                       placeholder="Enter student's full name"
-                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-cream/10 focus:outline-none focus:border-burnt/50 text-sm font-body"
+                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-white focus:outline-none focus:border-burnt/50 focus:ring-1 focus:ring-burnt/50 text-sm font-body shadow-sm"
                     />
                   </div>
                   <div>
@@ -273,7 +298,7 @@ export default function Admissions() {
                       onChange={handleInputChange}
                       required
                       placeholder="10-digit mobile number"
-                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-cream/10 focus:outline-none focus:border-burnt/50 text-sm font-body"
+                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-white focus:outline-none focus:border-burnt/50 focus:ring-1 focus:ring-burnt/50 text-sm font-body shadow-sm"
                     />
                   </div>
                 </div>
@@ -289,7 +314,7 @@ export default function Admissions() {
                       value={formState.email}
                       onChange={handleInputChange}
                       placeholder="e.g. name@domain.com"
-                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-cream/10 focus:outline-none focus:border-burnt/50 text-sm font-body"
+                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-white focus:outline-none focus:border-burnt/50 focus:ring-1 focus:ring-burnt/50 text-sm font-body shadow-sm"
                     />
                   </div>
                   <div>
@@ -300,10 +325,11 @@ export default function Admissions() {
                       name="course"
                       value={formState.course}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-cream/10 focus:outline-none focus:border-burnt/50 text-sm font-body text-navy"
+                      className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-white focus:outline-none focus:border-burnt/50 focus:ring-1 focus:ring-burnt/50 text-sm font-body text-navy shadow-sm"
                     >
                       <option value="D.Pharm">Diploma in Pharmacy (D.Pharm) - 2 Years</option>
                       <option value="B.Pharm">Bachelor of Pharmacy (B.Pharm) - 4 Years</option>
+                      <option value="B.Pharm Lateral">B.Pharm (Lateral Entry) - 3 Years</option>
                     </select>
                   </div>
                 </div>
@@ -318,22 +344,22 @@ export default function Admissions() {
                     onChange={handleInputChange}
                     rows={4}
                     placeholder="Enter 12th marks or any other academic details"
-                    className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-cream/10 focus:outline-none focus:border-burnt/50 text-sm font-body resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-navy/10 bg-white focus:outline-none focus:border-burnt/50 focus:ring-1 focus:ring-burnt/50 text-sm font-body resize-none shadow-sm"
                   />
                 </div>
 
                 {errorMessage && (
-                  <p className="text-red-500 font-body text-xs font-semibold">{errorMessage}</p>
+                  <p className="text-red-500 font-body text-sm text-center font-semibold bg-red-50 p-3 rounded-lg">{errorMessage}</p>
                 )}
 
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-burnt text-cream hover:bg-burnt/95 font-body py-4 rounded-lg flex items-center justify-center gap-2 tracking-wider text-[13px] uppercase font-bold"
+                  className="w-full bg-burnt text-cream hover:bg-burnt/95 font-body py-4 h-14 rounded-lg flex items-center justify-center gap-2 tracking-wider text-[14px] uppercase font-bold shadow-lg transition-transform hover:-translate-y-0.5"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="animate-spin" size={16} />
+                      <Loader2 className="animate-spin" size={18} />
                       Submitting Form...
                     </>
                   ) : (

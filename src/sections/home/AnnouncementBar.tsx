@@ -22,7 +22,7 @@ export default function AnnouncementBar() {
             className="px-5 py-1.5 bg-ivory text-burnt rounded-md text-[12px] uppercase tracking-wider font-body font-medium hover:scale-[1.03] transition-transform"
           >
             Apply
-          </a>
+          </Link>
           <button
             onClick={() => setVisible(false)}
             className="text-cream/80 hover:text-cream transition-colors p-1"
