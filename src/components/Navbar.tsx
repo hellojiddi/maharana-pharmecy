@@ -80,14 +80,14 @@ export default function Navbar() {
             </button>
           </SheetTrigger>
           <SheetContent side="right" className="bg-navy border-navy w-full sm:w-[400px]">
-            <div className="flex flex-col gap-8 mt-12">
+            <div className="flex flex-col gap-4 mt-6 overflow-y-auto max-h-[80vh] pr-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`font-display text-2xl md:text-3xl pb-3 border-b border-cream/10 transition-colors duration-300 ${
-                    isActive(link.path) ? 'text-burnt border-burnt/30' : 'text-cream hover:text-burnt hover:border-cream/30'
+                  className={`font-body text-sm font-medium uppercase tracking-wider pb-2 border-b border-cream/5 transition-colors duration-300 ${
+                    isActive(link.path) ? 'text-burnt border-burnt/30 font-bold' : 'text-cream hover:text-burnt'
                   }`}
                 >
                   {link.label}
@@ -96,7 +96,7 @@ export default function Navbar() {
               <Link
                 to="/admissions"
                 onClick={() => setMobileOpen(false)}
-                className="btn-primary mt-4 text-center"
+                className="btn-primary mt-2 text-center text-xs py-3"
               >
                 Apply Now
               </Link>

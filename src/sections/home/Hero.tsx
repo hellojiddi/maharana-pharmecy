@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MapPin, Phone, GraduationCap } from 'lucide-react';
+import { MapPin, Phone, GraduationCap, ChevronLeft, ChevronRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -123,6 +123,29 @@ export default function Hero() {
               />
             ))}
           </div>
+
+          {/* Manual Left/Right Navigation Arrows */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+            }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-navy/40 backdrop-blur-md border border-cream/10 flex items-center justify-center text-cream hover:bg-burnt transition-colors shadow-md hover:scale-105 active:scale-95 transition-all"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveIndex((prev) => (prev + 1) % heroImages.length);
+            }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-navy/40 backdrop-blur-md border border-cream/10 flex items-center justify-center text-cream hover:bg-burnt transition-colors shadow-md hover:scale-105 active:scale-95 transition-all"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
       </section>
 

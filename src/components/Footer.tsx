@@ -22,7 +22,7 @@ export default function Footer() {
   const footerRef = useScrollReveal<HTMLElement>({ stagger: 0.1, children: true });
 
   return (
-    <footer className="bg-navy" ref={footerRef}>
+    <footer className="bg-navy pb-20 md:pb-0" ref={footerRef}>
       {/* Main Footer */}
       <div className="max-w-[1400px] mx-auto px-6 pt-20 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
