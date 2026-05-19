@@ -8,13 +8,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const heroImages = [
   '/assets/hero-img-1.png',
-  '/assets/hero-img-2.jpg',
-  '/assets/hero-img-3.jpg',
-  '/assets/hero-img-4.jpg',
-  '/assets/hero-img-5.jpg',
-  '/assets/hero-img-6.jpg',
-  '/assets/hero-img-7.jpg',
-  '/assets/hero-img-8.jpg',
+  '/assets/hero-img-2.png',
+  '/assets/hero-img-3.png',
+  '/assets/hero-img-4.png',
+  '/assets/hero-img-5.png',
+  '/assets/hero-img-6.png',
 ];
 
 export default function Hero() {
@@ -164,11 +162,30 @@ export default function Hero() {
           ref={textRef}
           className="relative z-[3] max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24 flex flex-col items-center text-center"
         >
-          {/* Badge */}
-          <div className="hero-animate inline-flex items-center gap-2 px-4 py-2 bg-burnt rounded-full mb-6 shadow-md">
-            <span className="text-cream text-[12px] md:text-[13px] uppercase tracking-[0.08em] font-body">
-              PCI Approved &bull; BUHS Affiliated
-            </span>
+          {/* Badges with Direct PDF Verification Links */}
+          <div className="hero-animate flex flex-wrap justify-center gap-3 mb-6">
+            <a
+              href="/pdf/PCI-approval-Letter-of-Maharana-Pratap.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-burnt rounded-full shadow-md text-cream hover:bg-burnt/90 hover:scale-105 active:scale-95 transition-all text-[11px] md:text-[12px] uppercase tracking-[0.08em] font-body font-semibold"
+              title="Click to Verify PCI Approval Letter"
+            >
+              <span>PCI Approved</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-cream/60 animate-pulse" />
+              <span className="text-[10px] text-cream/80 font-normal normal-case">(Click to Verify)</span>
+            </a>
+            <a
+              href="/pdf/Affiliation-Letter-BUHS-Patna.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-navy/60 border border-cream/20 rounded-full shadow-md text-cream hover:bg-navy/80 hover:scale-105 active:scale-95 transition-all text-[11px] md:text-[12px] uppercase tracking-[0.08em] font-body font-semibold"
+              title="Click to Verify BUHS Affiliation Letter"
+            >
+              <span>BUHS Affiliated</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-cream/60 animate-pulse" />
+              <span className="text-[10px] text-cream/80 font-normal normal-case">(Click to Verify)</span>
+            </a>
           </div>
 
           {/* Main Heading */}
@@ -177,12 +194,12 @@ export default function Hero() {
           </h1>
 
           {/* Sub-heading */}
-          <p className="hero-animate font-body text-lg md:text-2xl text-cream/80 font-light tracking-wide mb-6">
+          <p className="hero-animate font-body text-lg md:text-2xl text-cream/90 font-light tracking-wide mb-6">
             Shaping Future Pharmacists in Buxar, Bihar
           </p>
 
-          {/* Description */}
-          <p className="hero-animate font-body text-sm md:text-base text-cream/60 max-w-[600px] mb-10 leading-relaxed">
+          {/* Description - Enhanced Contrast (text-cream/85 instead of text-cream/60) */}
+          <p className="hero-animate font-body text-sm md:text-base text-cream/85 max-w-[600px] mb-10 leading-relaxed">
             Approved by Pharmacy Council of India, New Delhi and Affiliated to Bihar University of Health Sciences, Patna. Offering D.Pharm and B.Pharm programs with world-class facilities.
           </p>
 
@@ -196,22 +213,22 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Bottom Info Bar */}
+          {/* Bottom Info Bar - Enhanced Contrast (text-cream/90 instead of text-cream/70) */}
           <div ref={barRef} className="w-full border-t border-cream/10 pt-10">
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
               <div className="flex items-center gap-2">
-                <MapPin size={16} className="text-cream/60" />
-                <span className="text-cream/70 text-[13px] font-body">Chilhari, Buxar, Bihar</span>
+                <MapPin size={16} className="text-cream/80" />
+                <span className="text-cream/90 text-[13px] font-body">Chilhari, Buxar, Bihar</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone size={16} className="text-cream/60" />
-                <a href="tel:+919279881832" className="text-cream/70 text-[13px] font-body hover:text-cream transition-colors">
+                <Phone size={16} className="text-cream/80" />
+                <a href="tel:+919279881832" className="text-cream/90 text-[13px] font-body hover:text-cream transition-colors">
                   +91 92798 81832
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <GraduationCap size={16} className="text-cream/60" />
-                <span className="text-cream/70 text-[13px] font-body">Est. 2018</span>
+                <GraduationCap size={16} className="text-cream/80" />
+                <span className="text-cream/90 text-[13px] font-body">Est. 2018</span>
               </div>
             </div>
           </div>

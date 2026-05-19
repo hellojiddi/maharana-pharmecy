@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Twitter, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const quickLinks = [
@@ -52,11 +52,10 @@ export default function Footer() {
               <a href="https://www.youtube.com/@mpgikanpur9460" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-red-600 transition-colors" title="YouTube">
                 <Youtube className="w-5 h-5 text-cream" />
               </a>
-              <a href="https://x.com/mpgiofficial" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-black transition-colors" title="X (Twitter)">
-                <Twitter className="w-5 h-5 text-cream" />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-blue-700 transition-colors" title="LinkedIn">
-                <Linkedin className="w-5 h-5 text-cream" />
+              <a href="https://x.com/mpgiofficial" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-black transition-colors" title="X">
+                <svg className="w-5 h-5 text-cream" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -117,15 +116,42 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Affiliations Bar */}
+      {/* Affiliations Bar - Directly linked to verified official PDFs for high trust and WCAG compliance */}
       <div className="border-t border-cream/10">
         <div className="max-w-[1200px] mx-auto px-6 py-6">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-            <span className="text-cream/50 text-xs uppercase tracking-wider">PCI Approved</span>
-            <span className="text-cream/30">|</span>
-            <span className="text-cream/50 text-xs uppercase tracking-wider">BUHS Affiliated</span>
-            <span className="text-cream/30 hidden md:inline">|</span>
-            <span className="text-cream/50 text-xs uppercase tracking-wider">Govt. of Bihar NOC</span>
+          <div className="flex flex-wrap justify-center items-center gap-y-4 gap-x-8 md:gap-x-12">
+            <a
+              href="/pdf/PCI-approval-Letter-of-Maharana-Pratap.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream/80 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1.5"
+              title="Verify PCI Approval Letter"
+            >
+              <span>PCI Approved</span>
+              <span className="text-[10px] text-cream/40 font-normal normal-case">(Verify)</span>
+            </a>
+            <span className="text-cream/20 hidden sm:inline">|</span>
+            <a
+              href="/pdf/Affiliation-Letter-BUHS-Patna.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream/80 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1.5"
+              title="Verify BUHS Affiliation Letter"
+            >
+              <span>BUHS Affiliated</span>
+              <span className="text-[10px] text-cream/40 font-normal normal-case">(Verify)</span>
+            </a>
+            <span className="text-cream/20 hidden sm:inline">|</span>
+            <a
+              href="/pdf/Bihar-State-Govt-NOC-for-D.Pharm-B.Pharm.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream/80 hover:text-burnt text-xs uppercase tracking-wider font-semibold transition-colors flex items-center gap-1.5"
+              title="Verify Govt. of Bihar NOC"
+            >
+              <span>Govt. of Bihar NOC</span>
+              <span className="text-[10px] text-cream/40 font-normal normal-case">(Verify)</span>
+            </a>
           </div>
         </div>
       </div>

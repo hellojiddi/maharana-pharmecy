@@ -14,49 +14,49 @@ const labs = [
     title: 'Pharmaceutics Lab',
     desc: 'Equipped for drug formulation, manufacturing, and quality control. Students learn tablet preparation, capsule filling, and emulsion technology.',
     equipment: ['Tablet Compression Machine', 'Coating Pan', 'Dissolution Apparatus', 'Sieve Shaker'],
-    image: '/assets/lab-pharmaceutics.jpg',
+    image: '/assets/lab-pharmaceutics.png',
   },
   {
     title: 'Pharmaceutical Chemistry Lab',
     desc: 'Modern analytical lab for drug synthesis, identification, and purity testing using instrumental and chemical methods.',
     equipment: ['UV Spectrophotometer', 'pH Meter', 'Analytical Balance', 'Distillation Unit'],
-    image: '/assets/hero-img-8.jpg',
+    image: '/assets/hero-img-2.png',
   },
   {
     title: 'Physiology Lab',
     desc: 'Human anatomy and physiology study with models, charts, and practical demonstration equipment for understanding body systems.',
     equipment: ['Human Skeleton Model', 'Organ Models', 'Sphygmomanometer', 'Stethoscope'],
-    image: '/assets/hero-img-2.jpg',
+    image: '/assets/hero-img-4.png',
   },
   {
     title: 'Pharmacology Lab',
     desc: 'Advanced facility for studying drug action, toxicity testing, and bioassay procedures on isolated tissue preparations.',
     equipment: ["Sherrington's Kymograph", 'Pole Climbing Apparatus', 'Histamine Chamber', 'Organ Bath'],
-    image: '/assets/lab-pharmacology.jpg',
+    image: '/assets/hero-img-1.png',
   },
   {
     title: 'Pharmacognosy Lab',
     desc: 'Herbarium and microscopy facility for identification, classification, and study of medicinal plants and natural products.',
     equipment: ['Binocular Microscope', 'Microtome', 'Camera Lucida', 'Herbarium Sheets'],
-    image: '/assets/hero-img-5.jpg',
+    image: '/assets/hero-img-5.png',
   },
   {
     title: 'Biochemistry & Clinical Pathology Lab',
     desc: 'Diagnostic laboratory for biochemical testing, blood analysis, urine examination, and clinical pathology procedures.',
     equipment: ['Colorimeter', 'Centrifuge', 'Glucometer', 'Hemocytometer'],
-    image: '/assets/hero-img-6.jpg',
+    image: '/assets/hero-img-3.png',
   },
   {
     title: 'Hospital & Clinical Pharmacy Lab',
     desc: 'Simulated hospital pharmacy setup for learning patient counseling, prescription handling, and clinical pharmacy practice.',
     equipment: ['Medicine Cabinets', 'Mock Prescriptions', 'Drug Information Resources'],
-    image: '/assets/hero-img-3.jpg',
+    image: '/assets/hero-img-6.png',
   },
   {
     title: 'Machine Room',
     desc: 'Dedicated space housing heavy pharmaceutical machinery for large-scale formulation and manufacturing demonstrations.',
     equipment: ['Multi-Mill', 'Fluidized Bed Dryer', 'Blister Packing Machine', 'Ointment Mixer'],
-    image: '/assets/hero-img-7.jpg',
+    image: '/assets/hero-img-2.png',
   },
 ];
 
@@ -258,7 +258,7 @@ export default function Facilities() {
       <PageHeader
         title="Our Facilities"
         subtitle="State-of-the-art infrastructure approved by Pharmacy Council of India"
-        backgroundImage="/assets/lab-pharmaceutics.jpg"
+        backgroundImage="/assets/lab-pharmaceutics.png"
       />
       <SalientFeaturesBar />
       <LabsSection />
