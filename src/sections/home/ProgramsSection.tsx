@@ -10,7 +10,7 @@ const courses = [
     eligibility: 'Class 12 (Science)',
     description:
       'A two-year career-oriented diploma course designed to prepare students to work under the guidance of experienced pharmacists. Covers pharmaceutics, pharmacology, pharmacognosy, and pharmaceutical chemistry.',
-    image: '/assets/course-dpharm.jpg',
+    image: '/assets/about-campus-premium.png',
   },
   {
     badge: 'Degree',
@@ -19,7 +19,7 @@ const courses = [
     eligibility: 'Class 12 (PCM/B with 50%)',
     description:
       'An undergraduate program providing deep knowledge of science and medicine. Learn healthcare, biochemical science, drug formulation, and clinical pharmacy with dedicated labs and experienced faculty.',
-    image: '/assets/course-bpharm.jpg',
+    image: '/assets/pharmacy-lab-premium.png',
   },
 ];
 

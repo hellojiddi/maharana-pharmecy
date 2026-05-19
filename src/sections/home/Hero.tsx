@@ -21,7 +21,33 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      setActiveIndex((prev) => (prev + 1) % heroImages.length);
+    } else if (isRightSwipe) {
+      setActiveIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    }
+  };
 
   useEffect(() => {
     const text = textRef.current;
@@ -58,6 +84,9 @@ export default function Hero() {
       <section
         ref={sectionRef}
         className="relative h-[55vh] md:h-[70vh] bg-navy overflow-hidden flex items-center pt-20"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {/* Premium Ken Burns Fade Slider */}
         <div className="absolute inset-0 w-full h-full">
