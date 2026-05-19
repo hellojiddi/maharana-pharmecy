@@ -29,11 +29,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-navy-85 backdrop-blur-xl shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className="sticky top-0 left-0 w-full z-50 transition-all duration-500 bg-navy/95 backdrop-blur-xl border-b border-cream/10 shadow-lg"
       style={{ height: 80 }}
     >
       <div className="max-w-[1440px] mx-auto px-4 xl:px-6 h-full flex items-center justify-between">

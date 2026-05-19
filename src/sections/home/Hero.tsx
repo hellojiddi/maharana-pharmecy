@@ -83,7 +83,7 @@ export default function Hero() {
     <>
       <section
         ref={sectionRef}
-        className="relative h-[55vh] md:h-[70vh] bg-navy overflow-hidden flex items-center pt-20"
+        className="relative h-[55vh] md:h-[70vh] bg-navy overflow-hidden flex items-center"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
