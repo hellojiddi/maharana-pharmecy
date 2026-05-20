@@ -101,4 +101,30 @@
   .font-display {
     font-family: 'Playfair Display', serif;
   }
+
+  @keyframes text-shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .verify-shine {
+    background: linear-gradient(
+      120deg,
+      #ffffff 15%,
+      #ffe699 35%,
+      #fff6d6 50%,
+      #ffe699 65%,
+      #ffffff 85%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: text-shimmer 3s linear infinite;
+    display: inline-block;
+  }
 }

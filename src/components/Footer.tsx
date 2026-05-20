@@ -128,7 +128,7 @@ export default function Footer() {
               title="Verify PCI Approval Letter"
             >
               <span>PCI Approved</span>
-              <span className="text-[10px] opacity-50 font-normal normal-case">(Verify)</span>
+              <span className="text-[10px] font-semibold normal-case verify-shine">(Verify)</span>
             </a>
             <span className="text-cream opacity-25 hidden sm:inline">|</span>
             <a
@@ -139,7 +139,7 @@ export default function Footer() {
               title="Verify BUHS Affiliation Letter"
             >
               <span>BUHS Affiliated</span>
-              <span className="text-[10px] opacity-50 font-normal normal-case">(Verify)</span>
+              <span className="text-[10px] font-semibold normal-case verify-shine">(Verify)</span>
             </a>
             <span className="text-cream opacity-25 hidden sm:inline">|</span>
             <a
@@ -150,7 +150,7 @@ export default function Footer() {
               title="Verify Govt. of Bihar NOC"
             >
               <span>Govt. of Bihar NOC</span>
-              <span className="text-[10px] opacity-50 font-normal normal-case">(Verify)</span>
+              <span className="text-[10px] font-semibold normal-case verify-shine">(Verify)</span>
             </a>
           </div>
         </div>

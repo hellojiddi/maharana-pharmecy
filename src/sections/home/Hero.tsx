@@ -173,7 +173,7 @@ export default function Hero() {
             >
               <span>PCI Approved</span>
               <span className="w-1.5 h-1.5 rounded-full bg-cream/60 animate-pulse" />
-              <span className="text-[10px] text-cream/80 font-normal normal-case">(Click to Verify)</span>
+              <span className="text-[10px] font-semibold normal-case verify-shine">(Click to Verify)</span>
             </a>
             <a
               href="/pdf/Affiliation-Letter-BUHS-Patna.pdf"
@@ -184,7 +184,7 @@ export default function Hero() {
             >
               <span>BUHS Affiliated</span>
               <span className="w-1.5 h-1.5 rounded-full bg-cream/60 animate-pulse" />
-              <span className="text-[10px] text-cream/80 font-normal normal-case">(Click to Verify)</span>
+              <span className="text-[10px] font-semibold normal-case verify-shine">(Click to Verify)</span>
             </a>
           </div>
 
