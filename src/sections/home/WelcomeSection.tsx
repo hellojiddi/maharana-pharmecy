@@ -36,7 +36,7 @@ export default function WelcomeSection() {
                 The College is established with fully equipped laboratories, digital classrooms, library and well qualified faculties to provide quality education in the field of pharmacy.
               </p>
               <p>
-                Located in Chilhari, Buxar, Bihar — a peaceful and pollution-free setting ideal for educational pursuits, just 12 km from Buxar Railway Station and 7 km from Dumraon Railway Station. Situated near Buxar-Patna highway (NH-922).
+                Located in <a href="https://maps.google.com/?q=Maharana+Pratap+College+of+Pharmacy+Chilhari+Buxar" target="_blank" rel="noopener noreferrer" className="text-burnt hover:underline font-semibold">Chilhari, Buxar, Bihar</a> — a peaceful and pollution-free setting ideal for educational pursuits, just 12 km from Buxar Railway Station and 7 km from Dumraon Railway Station. Situated near Buxar-Patna highway (NH-922).
               </p>
             </div>
 

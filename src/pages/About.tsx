@@ -2,6 +2,7 @@ import PageHeader from '@/components/PageHeader';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
 import { Train, Bus, Car } from 'lucide-react';
+import { AIAssistantCardFull } from '@/components/AIAssistantCard';
 
 function OurStorySection() {
   const ref = useScrollReveal<HTMLElement>();
@@ -202,6 +203,7 @@ export default function About() {
       <ChairmanSection />
       <LocationSection />
       <KeyFactsSection />
+      <AIAssistantCardFull />
     </>
   );
 }

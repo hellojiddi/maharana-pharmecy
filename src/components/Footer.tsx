@@ -29,8 +29,8 @@ export default function Footer() {
           {/* Column 1 - About */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-burnt flex items-center justify-center">
-                <span className="text-cream font-display font-bold text-xl">R</span>
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-burnt flex items-center justify-center flex-shrink-0">
+                <img src="/assets/logo.png" alt="MPCP Logo" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h3 className="text-cream font-display font-semibold text-lg">MPCP</h3>
@@ -62,7 +62,7 @@ export default function Footer() {
 
           {/* Column 2 - Quick Links */}
           <div>
-            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/50 font-body mb-6">Quick Links</h4>
+            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/70 font-body font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Column 3 - Discover */}
           <div>
-            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/50 font-body mb-6">Discover</h4>
+            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/70 font-body font-semibold mb-6">Discover</h4>
             <ul className="space-y-3">
               {discoverLinks.map((link) => (
                 <li key={link.label}>
@@ -90,14 +90,19 @@ export default function Footer() {
 
           {/* Column 4 - Contact */}
           <div>
-            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/50 font-body mb-6">Contact</h4>
+            <h4 className="text-[13px] uppercase tracking-[0.08em] text-cream/70 font-body font-semibold mb-6">Contact</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="text-burnt mt-1 flex-shrink-0" />
-                <p className="text-cream opacity-85 text-sm">
+                <a 
+                  href="https://maps.google.com/?q=Maharana+Pratap+College+of+Pharmacy+Chilhari+Buxar" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-cream opacity-85 text-sm hover:text-burnt hover:opacity-100 transition-all duration-300"
+                >
                   Vill: Chilhari, Block: Dumraon,<br />
                   Dist. Buxar, Bihar - 802133
-                </p>
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-burnt flex-shrink-0" />

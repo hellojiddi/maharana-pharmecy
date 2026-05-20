@@ -7,12 +7,12 @@ import { MapPin, Phone, GraduationCap, ChevronLeft, ChevronRight } from 'lucide-
 gsap.registerPlugin(ScrollTrigger);
 
 const heroImages = [
-  '/assets/hero-img-1.png',
-  '/assets/hero-img-2.png',
-  '/assets/hero-img-3.png',
-  '/assets/hero-img-4.png',
-  '/assets/hero-img-5.png',
-  '/assets/hero-img-6.png',
+  { src: '/assets/hero-img-1.png', alt: 'Maharana Pratap College of Pharmacy main building, Chilhari, Buxar, Bihar' },
+  { src: '/assets/hero-img-2.png', alt: 'MPCP campus facilities and infrastructure' },
+  { src: '/assets/hero-img-3.png', alt: 'Pharmacy laboratory at Maharana Pratap College of Pharmacy' },
+  { src: '/assets/hero-img-4.png', alt: 'MPCP students in classroom, D.Pharm and B.Pharm program' },
+  { src: '/assets/hero-img-5.png', alt: 'College life and activities at MPCP Buxar' },
+  { src: '/assets/hero-img-6.png', alt: 'Maharana Pratap College of Pharmacy campus view' },
 ];
 
 export default function Hero() {
@@ -81,14 +81,14 @@ export default function Hero() {
     <>
       <section
         ref={sectionRef}
-        className="relative h-[55vh] md:h-[70vh] bg-navy overflow-hidden flex items-center"
+        className="relative min-h-[62vh] md:h-[70vh] bg-navy overflow-hidden flex items-center"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         {/* Premium Ken Burns Fade Slider */}
         <div className="absolute inset-0 w-full h-full">
-          {heroImages.map((img, i) => (
+          {heroImages.map((image, i) => (
             <div
               key={i}
               className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
@@ -96,12 +96,12 @@ export default function Hero() {
               }`}
             >
               <img
-                src={img}
-                alt={`College life ${i + 1}`}
+                src={image.src}
+                alt={image.alt}
                 className={`w-full h-full object-cover transition-transform duration-[5000ms] ease-out ${
                   i === activeIndex ? 'scale-105' : 'scale-100'
                 }`}
-                loading="eager"
+                loading={i === 0 ? 'eager' : 'lazy'}
               />
               {/* Premium dark gradient overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
@@ -128,7 +128,7 @@ export default function Hero() {
               e.stopPropagation();
               setActiveIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
             }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-navy/40 backdrop-blur-md border border-cream/10 flex items-center justify-center text-cream hover:bg-burnt transition-colors shadow-md hover:scale-105 active:scale-95 transition-all"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-navy/40 backdrop-blur-md border border-cream/10 flex items-center justify-center text-cream hover:bg-burnt shadow-md hover:scale-105 active:scale-95 transition-all duration-200"
             aria-label="Previous slide"
           >
             <ChevronLeft size={20} />
@@ -139,7 +139,7 @@ export default function Hero() {
               e.stopPropagation();
               setActiveIndex((prev) => (prev + 1) % heroImages.length);
             }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-navy/40 backdrop-blur-md border border-cream/10 flex items-center justify-center text-cream hover:bg-burnt transition-colors shadow-md hover:scale-105 active:scale-95 transition-all"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-navy/40 backdrop-blur-md border border-cream/10 flex items-center justify-center text-cream hover:bg-burnt shadow-md hover:scale-105 active:scale-95 transition-all duration-200"
             aria-label="Next slide"
           >
             <ChevronRight size={20} />
@@ -218,7 +218,14 @@ export default function Hero() {
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
               <div className="flex items-center gap-2">
                 <MapPin size={16} className="text-cream/80" />
-                <span className="text-cream/90 text-[13px] font-body">Chilhari, Buxar, Bihar</span>
+                <a 
+                  href="https://maps.google.com/?q=Maharana+Pratap+College+of+Pharmacy+Chilhari+Buxar" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-cream/90 text-[13px] font-body hover:text-burnt hover:scale-105 transition-all duration-300"
+                >
+                  Chilhari, Buxar, Bihar
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={16} className="text-cream/80" />

@@ -102,6 +102,12 @@
     font-family: 'Playfair Display', serif;
   }
 
+  /* Urdu / RTL script support for language selector */
+  [lang="ur"], .urdu-text {
+    direction: rtl;
+    font-family: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', serif;
+  }
+
   @keyframes text-shimmer {
     0% {
       background-position: -200% center;

@@ -7,6 +7,7 @@ import WhyChooseSection from '@/sections/home/WhyChooseSection';
 import GalleryPreview from '@/sections/home/GalleryPreview';
 import AffiliationsSection from '@/sections/home/AffiliationsSection';
 import CTASection from '@/sections/home/CTASection';
+import { AIAssistantCardCompact } from '@/components/AIAssistantCard';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <WhyChooseSection />
       <GalleryPreview />
       <AffiliationsSection />
+      <AIAssistantCardCompact />
       <CTASection />
     </>
   );

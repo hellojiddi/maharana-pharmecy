@@ -32,10 +32,9 @@ export default function Navbar() {
     >
       <div className="max-w-[1440px] mx-auto px-4 xl:px-6 h-full flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-burnt flex items-center justify-center">
-            <span className="text-cream font-display font-bold text-lg">R</span>
-            <span className="text-cream font-display font-bold text-xs absolute ml-3 mt-1">x</span>
+        <Link to="/" className="flex items-center gap-3" aria-label="Maharana Pratap College of Pharmacy - Home">
+          <div className="w-10 h-10 rounded-full overflow-hidden bg-burnt flex items-center justify-center flex-shrink-0">
+            <img src="/assets/logo.png" alt="MPCP Logo" className="w-full h-full object-cover" />
           </div>
           <div className="block">
             <span className="text-cream font-display font-semibold text-xl leading-none tracking-wide block">MPCP</span>

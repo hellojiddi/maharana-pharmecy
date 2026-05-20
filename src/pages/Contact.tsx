@@ -177,11 +177,17 @@ function InquiryForm() {
               <h4 className="font-body text-base font-semibold text-navy mb-3">
                 Maharana Pratap College of Education (Pharmacy College)
               </h4>
-              <div className="space-y-1 text-navy/70 text-sm font-body leading-relaxed mb-4">
+              <a 
+                href="https://maps.google.com/?q=Maharana+Pratap+College+of+Pharmacy+Chilhari+Buxar" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block space-y-1 text-navy/70 text-sm font-body leading-relaxed mb-4 hover:text-burnt transition-colors duration-300"
+                title="Click to view on Google Maps"
+              >
                 <p>Village: Chilhari</p>
                 <p>Block: Dumraon</p>
                 <p>District: Buxar, Bihar - 802133</p>
-              </div>
+              </a>
               <div className="h-px bg-navy/10 my-4" />
               <div className="space-y-3 mb-4">
                 <a href="tel:+919279881832" className="flex items-center gap-2 text-navy text-sm font-body">
