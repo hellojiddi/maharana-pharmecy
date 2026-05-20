@@ -103,8 +103,8 @@ export default function Hero() {
                 }`}
                 loading={i === 0 ? 'eager' : 'lazy'}
               />
-              {/* Premium dark gradient overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
+              {/* Soft gradient overlay so the image isn't too dark at the bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
             </div>
           ))}
 
