@@ -182,7 +182,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Maharana Pratap College of Pharmacy. All Rights Reserved.
           </p>
           <p className="text-center md:text-right text-cream opacity-60 text-[13px]">
-            Designed &amp; Developed by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" className="text-cream opacity-80 hover:opacity-100 hover:text-burnt font-medium transition-all">Master Manikant</a>
+            Designed &amp; Developed by <a href="https://mastermanikant.com/website-services" target="_blank" rel="noopener noreferrer" className="text-cream opacity-80 hover:opacity-100 hover:text-burnt font-medium transition-all">Master Manikant</a>
           </p>
         </div>
       </div>

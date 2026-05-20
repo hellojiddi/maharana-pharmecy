@@ -75,28 +75,35 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <button className="text-cream p-2">
-              <Menu size={24} />
+            <button className="text-cream w-10 h-10 rounded-full bg-cream/5 border border-cream/10 flex items-center justify-center hover:bg-cream/10 hover:border-cream/20 active:scale-95 transition-all" aria-label="Open Menu">
+              <Menu size={20} />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="bg-navy border-navy w-full sm:w-[400px]">
-            <div className="flex flex-col gap-4 mt-6 overflow-y-auto max-h-[80vh] pr-2">
+          <SheetContent side="right" className="!bg-navy !border-navy text-cream w-full sm:w-[350px] p-8 pt-16">
+            <div className="flex flex-col gap-5 mt-6 overflow-y-auto max-h-[80vh]">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`font-body text-sm font-medium uppercase tracking-wider pb-2 border-b border-cream/5 transition-colors duration-300 ${
-                    isActive(link.path) ? 'text-burnt border-burnt/30 font-bold' : 'text-cream hover:text-burnt'
+                  className={`font-body text-[15px] font-medium uppercase tracking-[0.08em] pb-3.5 border-b border-cream/10 transition-all duration-300 flex items-center justify-between group transform hover:translate-x-1.5 ${
+                    isActive(link.path) 
+                      ? 'text-[#E5A900] border-[#E5A900]/30 font-bold' 
+                      : 'text-cream/80 hover:text-[#E5A900] hover:border-cream/20'
                   }`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {isActive(link.path) ? (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E5A900] shadow-[0_0_8px_#E5A900] transition-all" />
+                  ) : (
+                    <span className="w-1 h-1 rounded-full bg-cream/10 group-hover:bg-[#E5A900]/50 transition-colors" />
+                  )}
                 </Link>
               ))}
               <Link
                 to="/admissions"
                 onClick={() => setMobileOpen(false)}
-                className="btn-primary mt-2 text-center text-xs py-3"
+                className="btn-primary mt-6 text-center text-xs py-4 shadow-lg !bg-burnt hover:!bg-burnt/90 text-cream font-semibold tracking-wider"
               >
                 Apply Now
               </Link>
